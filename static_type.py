@@ -1,5 +1,6 @@
 # examples and practice of statically typed python functions
 # I don't think I'm doing this correctly or I don't understand it.
+# watch this realpython video:  https://www.youtube.com/watch?v=2xWhaALHTvU
 
 
 def static_string(a_str: str, b_str: str) -> str:
