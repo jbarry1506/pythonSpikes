@@ -44,11 +44,12 @@ def boss_switch(self, ls):
 
     return the_list
 
-
+# TODO log errors properly
 try:
-    boss_switch()
+    boss_dict = boss_switch(my_boss_list)
     for num_boss in my_boss_list:
         pprint.pprint(num_boss)
-        
+    for bd in boss_dict:
+        print("bd is {}".format(bd))
 except:
-    pass
+    print("There is an exception")
