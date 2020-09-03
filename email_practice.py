@@ -1,6 +1,7 @@
 import smtplib
 import vars
 
+# https://stackabuse.com/how-to-send-emails-with-gmail-using-python/
 jims_email = vars.jims_email
 pw = vars.email_pw
 
