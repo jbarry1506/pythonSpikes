@@ -75,7 +75,7 @@ class Timer(object):
                 self.label.color = (180, 0, 0, 255)
             if m < 0:
                 self.running = False
-                self.label.text = 'Trick\n or\n Treat!'
+                self.label.text = 'Trick or Treat!'
 
 @window.event
 def on_key_press(symbol, modifiers):
