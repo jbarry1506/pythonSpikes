@@ -54,8 +54,8 @@ COUNTDOWN = 5
 
 class Timer(object):
     def __init__(self):
-        self.start = ':0%s' % COUNTDOWN
-        self.label = pyglet.text.Label(self.start, font_size=360,
+        self.start = ':0%s' % str(COUNTDOWN-2)
+        self.label = pyglet.text.Label(self.start, font_size=160,
                                        x=window.width//2, y=window.height//2,
                                        anchor_x='center', anchor_y='center')
         self.reset()
