@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 from time import sleep
 import sys
 import pyglet
+import vlc
 
 # set the GPIO mapping to Broadcom GPIO
 GPIO.setmode(GPIO.BCM)
@@ -10,6 +11,8 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(12, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 # set up GPIO pin 16 as output
 GPIO.setup(16, GPIO.OUT)
+# set up wav file for scream
+scream = vlc.MediaPlayer("./sounds/scream.wav")
 # set up countdown window
 window = pyglet.window.Window(fullscreen=True)
 COUNTDOWN = 5
@@ -61,8 +64,9 @@ def on_draw():
 def button_press():
     print("button pressed")
     GPIO.output(16,1)
-    pyglet.clock.schedule_interval(timer.update, 1)
-    pyglet.app.run()
+    scream.play()
+    # pyglet.clock.schedule_interval(timer.update, 1)
+    # pyglet.app.run()
 
 
 
@@ -80,7 +84,7 @@ try:
             GPIO.output(16,0)
             print("Button released")
             pressed = 0
-            window = pyglet.window.Window(fullscreen=True)
+            # window = pyglet.window.Window(fullscreen=True)
 except KeyboardInterrupt:
     # clean up settings
     GPIO.cleanup()
