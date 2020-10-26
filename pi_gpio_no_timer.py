@@ -20,6 +20,7 @@ GPIO.setup(16, GPIO.OUT)
 def button_press():
     print("button pressed")
     GPIO.output(16,1)
+    sleep(.5)
     os.system("aplay ./sounds/scream.wav")
     sleep(3)
 
