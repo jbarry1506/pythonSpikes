@@ -2,4 +2,4 @@
 .venv/
 vars.py
 .vscode/
-__pycache__
+/__pycache__
