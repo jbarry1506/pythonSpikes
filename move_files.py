@@ -30,14 +30,16 @@ try:
         for fil in f[2]:
             lin_path_file = pathlib.Path(lin_path+fil)
             print(lin_path_file)
-            conn.storeFile('beast_pictures',win_path+fil, lin_path_file, timeout=30)
+            with open(lin_path_file, 'r') as transfer_file:
+                conn.storeFile('beast_pictures',win_path+fil, transfer_file, timeout=30)
+                transfer_file.close()
         # lin_to_win = pathlib.WindowsPath(lin_path_file)
     #     srv.put(localpath=lin_path_file,remotepath=win_path_file)
 except Exception as e:
     print("Connection issue")
     print(e)
 
-
+conn.close()
 
 
 # with pysftp.Connection(host, username=username, password=password) as sftp:
