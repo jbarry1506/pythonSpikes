@@ -2,3 +2,4 @@
 .venv/
 vars.py
 .vscode/
+__pycache__
