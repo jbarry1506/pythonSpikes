@@ -22,6 +22,7 @@ conn = SMBConnection(userID, password, client_machine_name, server_name, domain=
 conn.connect(vars.beast_ip, port=445)
 
 win_path = "C:\\Users\\Beast\\Pictures\\transfer\\"
+win_path_2 = "C:\\temp\\"
 lin_path = "/home/pi/Pictures/PiCam/"
 
 try:
