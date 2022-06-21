@@ -3,3 +3,4 @@
 vars.py
 .vscode/
 /__pycache__
+creds.py
