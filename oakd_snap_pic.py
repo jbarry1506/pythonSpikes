@@ -18,3 +18,7 @@ else:
     still = daicam_truth
     print(f"Now this is what we got:  {still}")
 
+daicam.setCaptureStill(True)
+
+if still:
+    print("still capture is set.")
