@@ -10,7 +10,8 @@ from smb.SMBConnection import SMBConnection
 
 userID = vars.beast_un
 password = vars.beast_xv
-client_machine_name = 'pi3web'
+# client_machine_name = 'pi3web'
+client_machine_name = 'raspberrypi'
 
 server_name = vars.beast_hostname
 server_ip = vars.beast_ip
@@ -23,7 +24,8 @@ conn.connect(vars.beast_ip, port=445)
 
 win_path = "C:\\Users\\Beast\\Pictures\\transfer\\"
 win_path_2 = "C:\\temp\\"
-lin_path = "/home/pi/Pictures/PiCam/"
+#lin_path = "/home/pi/Pictures/PiCam/"
+lin_path = "/home/jbarry1506/Documents/code/python/pythonSpikes/Astro/"
 
 try:
     # srv = pysftp.Connection(host="192.168.0.21", username=vars.user_name, password=vars.beast_xv)
