@@ -26,7 +26,7 @@ logging.basicConfig(filename=f"/home/jbarry1506/Documents/script_logs/astro/{tod
 try:
     os.system("sudo mount /dev/sda1 /mnt")
 except Exception as e:
-    logging.error(f"[{datetime.datetime.today()}][{e}]")
+    logging.error(f"[{datetime.datetime.now()}]:  {e}")
 
 cam = picamera.PiCamera()
 cam.start_preview()
@@ -58,12 +58,12 @@ def on_press(key):
 def on_release(key):
     print(f'Key released: {key}')
     if key.char == 'p':
-        print('Taking a picture')
+        logging.info(f"[{datetime.datetime.now()}]:  taking a still shot")
         dt = str(datetime.datetime.now()).replace(' ','').replace('.','-').replace(':','-')
         cam.capture(output=f"/mnt/Astro/{dt}.jpg")
-    if key.char == 't':
-        print('Time captures')
-        dt = str(datetime.datetime.now()).replace(' ','').replace('.','-').replace(':','-')
+    # if key.char == 't':
+    #     logging.info(f'[{datetime.datetime.now()}]:  Time captures')
+    #     dt = str(datetime.datetime.now()).replace(' ','').replace('.','-').replace(':','-')
 
     if key == keyboard.Key.esc:
         # stop listener
@@ -72,7 +72,6 @@ def on_release(key):
 
 with keyboard.Listener(
     on_press=on_press,
-    on_release=on_release
-) as listener:
+    on_release=on_release) as listener:
     listener.join()
 
