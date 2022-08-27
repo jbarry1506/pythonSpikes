@@ -1,11 +1,32 @@
 """
-Script to try out astrophotography with a legacy picam.
+Script to try out astrophotography with a picam.
+TODO - THIS NEEDS A GUI AND DB
 """
 
 import picamera
 # import keyboard
 from pynput import keyboard
 import datetime
+import os
+import logging
+
+"""
+TODO:
+- accept args:
+    - mount drive
+    - frame length
+- create logs for errors
+- try/except blocks
+"""
+
+today = datetime.datetime.today().date()
+
+logging.basicConfig(filename=f"/home/jbarry1506/Documents/script_logs/astro/{today}_astro_error.log")
+
+try:
+    os.system("sudo mount /dev/sda1 /mnt")
+except Exception as e:
+    logging.error(f"[{datetime.datetime.today()}][{e}]")
 
 cam = picamera.PiCamera()
 cam.start_preview()
@@ -38,8 +59,12 @@ def on_release(key):
     print(f'Key released: {key}')
     if key.char == 'p':
         print('Taking a picture')
-        dt = datetime.datetime.now()
-        cam.capture(output=f"{dt}.jpg")
+        dt = str(datetime.datetime.now()).replace(' ','').replace('.','-').replace(':','-')
+        cam.capture(output=f"/mnt/Astro/{dt}.jpg")
+    if key.char == 't':
+        print('Time captures')
+        dt = str(datetime.datetime.now()).replace(' ','').replace('.','-').replace(':','-')
+
     if key == keyboard.Key.esc:
         # stop listener
         return False
