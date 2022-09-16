@@ -9,15 +9,29 @@ from pynput import keyboard
 import datetime
 import os
 import logging
+import argparse
 
 """
 TODO:
 - accept args:
     - mount drive
-    - frame length
+    - shutter speed
+    - ISO
+    - add validation, error messages, logs for all arguments
 - create logs for errors
 - try/except blocks
+- create app
 """
+
+# take command line arguments
+# ap = argparse.ArgumentParser()
+# ap.add_argument("-m", "--mode", required=False, default="still", help="Accepted Values = 'still', 'series', 'video'")
+# ap.add_argument("-i", "--iso", required=False, help="Accepted Values = 200, 400, 600, 800")
+# ap.add_argument("-s", "--shutter", required=False, help="2000 < Shutter speed > 6000000")
+
+# parse the arguments
+
+
 
 today = datetime.datetime.today().date()
 
@@ -61,9 +75,13 @@ def on_release(key):
         logging.info(f"[{datetime.datetime.now()}]:  taking a still shot")
         dt = str(datetime.datetime.now()).replace(' ','').replace('.','-').replace(':','-')
         cam.capture(output=f"/mnt/Astro/{dt}.jpg")
+
+    # This loop does not work
     # if key.char == 't':
-    #     logging.info(f'[{datetime.datetime.now()}]:  Time captures')
-    #     dt = str(datetime.datetime.now()).replace(' ','').replace('.','-').replace(':','-')
+    #     while key.char != 's':
+    #         logging.info(f'[{datetime.datetime.now()}]:  Time captures')
+    #         dt = str(datetime.datetime.now()).replace(' ','').replace('.','-').replace(':','-')
+    #         cam.capture(output=f"/mnt/Astro/{dt}.jpg")
 
     if key == keyboard.Key.esc:
         # stop listener
