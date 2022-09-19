@@ -4,6 +4,7 @@ TODO - THIS NEEDS A GUI AND DB
 """
 
 from ast import arg
+from time import sleep
 import picamera
 from pynput import keyboard
 import datetime
@@ -50,9 +51,6 @@ logging.basicConfig(filename=f"/home/jbarry1506/Documents/script_logs/astro/{tod
 
 
 def cap_mode(md, iso, shtr):
-    print(md)
-    print(iso)
-    print(shtr)
     if md == None:
         md = "still"
 
@@ -79,6 +77,8 @@ def cap_mode(md, iso, shtr):
                 dt = str(datetime.datetime.now()).replace(' ','').replace('.','-').replace(':','-')
                 cam.iso = int(iso)
                 cam.shutter_speed = int(shtr)
+                cam.resolution = (1920,1080)
+                # sleep(3)
                 cam.capture(output=f"/mnt/Astro/{dt}.jpg")
 
             if key == keyboard.Key.esc:
