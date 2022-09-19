@@ -50,16 +50,7 @@ today = datetime.datetime.today().date()
 logging.basicConfig(filename=f"/home/jbarry1506/Documents/script_logs/astro/{today}_astro_error.log")
 
 
-def cap_mode(md, iso, shtr):
-    if md == None:
-        md = "still"
-
-    if md == "still":
-        if iso == None:
-            iso = 200
-        if shtr == None:
-            shtr = 10000
-            
+def catch_keypress(iso,shtr):
         def on_press(key):
             try:
                 print(f'Alphanumeric key pressed: {key}')
@@ -85,10 +76,26 @@ def cap_mode(md, iso, shtr):
                 # stop listener
                 return False
 
+
         with keyboard.Listener(
             on_press=on_press,
             on_release=on_release) as listener:
             listener.join()
+
+
+def cap_mode(md, iso, shtr):
+    if md == None:
+        md = "still"
+
+    if md == "still":
+        if iso == None:
+            iso = 200
+        if shtr == None:
+            shtr = 10000
+            
+        # TODO - Create Decorator / helper function
+        catch_keypress(iso,shtr)
+        # END Decorator / helper function
 
     elif md == "series":
         pass
