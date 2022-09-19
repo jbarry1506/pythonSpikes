@@ -50,6 +50,9 @@ logging.basicConfig(filename=f"/home/jbarry1506/Documents/script_logs/astro/{tod
 
 
 def cap_mode(md, iso, shtr):
+    print(md)
+    print(iso)
+    print(shtr)
     if md == None:
         md = "still"
 
@@ -74,6 +77,8 @@ def cap_mode(md, iso, shtr):
             if key.char == 'p':
                 logging.info(f"[{datetime.datetime.now()}]:  taking a still shot")
                 dt = str(datetime.datetime.now()).replace(' ','').replace('.','-').replace(':','-')
+                cam.iso = int(iso)
+                cam.shutter_speed = int(shtr)
                 cam.capture(output=f"/mnt/Astro/{dt}.jpg")
 
             if key == keyboard.Key.esc:
