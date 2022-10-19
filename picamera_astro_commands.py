@@ -98,7 +98,7 @@ def cap_mode(md, iso, shtr):
         # END Decorator / helper function
 
     elif md == "series":
-        pass
+        catch_keypress(iso,shtr)
     elif md == "video":
         pass
 
