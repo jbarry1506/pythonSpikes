@@ -1,5 +1,6 @@
 my_name = "Jim"
-my_role = "President"
+my_role = "Goofball"
+
 
 def jims_func(nm, rl):
     """
@@ -21,4 +22,18 @@ def jims_func(nm, rl):
 
 
 my_phrase = jims_func(my_name, my_role)
-print(my_phrase)
+# print(my_phrase)
+
+
+def funfunc(mp):
+    """
+    mp = my_phrase from jims_func
+
+    take the output from jims_func and add more to it.
+    """
+    more_text = mp + "  His job is to annoy his wife with new ideas!"
+
+    return more_text
+
+
+print(funfunc(my_phrase))
